@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <link rel="stylesheet" href="distributors.css" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <title>free-fridge</title>
+  </head>
+  <body>
+    <h3>Search Donors</h3>
+    <form action="/distributors" method="POST">
+      <label for="lat">Latitude</label>
+      <input type="number" name="lat" id="lat" step="any" />
+      <label for="lon">Longitude</label>
+      <input type="number" name="lon" id="lon" step="any" />
+      <label for="dist"
+        >Range: <b><span id="disval"></span></b> KM</label
+      >
+
+      <input type="range" name="dist" id="dist" value="10" />
+      <button type="button" onclick="postForm()" style="margin: auto">Fetch Data</button>
+    </form>
+    <div class="container-data" id="container-data">  
+    </div>
+    <script src="distributors.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>
