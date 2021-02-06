@@ -34,6 +34,9 @@ function postForm() {
   let a = { lat: userLat, lon: userLong, dist: dis };
   $.post("/distributors", a, (d) => {
     console.log(d);
+    if(d.length==0){
+      document.getElementById("notfood").style.visibility='visible'
+    }
     display(d)
   });
 }

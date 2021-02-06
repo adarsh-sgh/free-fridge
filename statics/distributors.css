@@ -6,6 +6,11 @@ form{
    display: flex;
    flex-wrap: wrap;
 }
+#notfood{
+  visibility: hidden;
+  text-align: center;
+  margin-top: 20px;
+}
 .container-data{
   text-align: center;
 }
