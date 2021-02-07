@@ -6,6 +6,12 @@ contribute afterwards
 below are the post requests urls<br>
 /donor.htm <br>/distributors<br> /delete
 
+<h4>HTML URLs</h4> 
+<a>statics\donor.htm</a> <br>
+<a>statics\distributors.html</a>   <br>
+<a>statics\form.html</a>  <br>
+<a>statics\index.html</a>  <br>
+
 <h4>Mongo db object e.g.</h4>
 <div>
 {  name:"Ekta",
@@ -17,6 +23,3 @@ longitude:98,
 remember:"on",
 }
 </div>
-
-<h4>HTML URLs</h4>
-donor.htm
