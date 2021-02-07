@@ -39,7 +39,20 @@ app.post("/delete", (req, res) => {
  res.send();
  deleteById(req["body"]["id"])
 });
-
+app.post("/notify", (req, res) => {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("freefridge");
+    
+    dbo.collection("reminder").insertOne(req.body, function (err, res) {
+      if (err) throw err;
+      console.log("reminder updated",req.body);
+      db.close();
+    });
+  });
+  res.send()
+ });
+ 
 var MongoClient = require("mongodb").MongoClient;
 ObjectID = require("mongodb").ObjectID;
 var url =
@@ -62,8 +75,7 @@ function read(latitude, longitude, precisionLength,f=()=>{}) {
     var dbo = db.db("freefridge");
 
     let precisionlat = precisionLength / 111.32;
-    precisionLong =
-      precisionLength / ((400075 * Math.cos((latitude * 2 * Math.PI) / 360)) / 360);
+    precisionLong =precisionLength / ((400075 * Math.cos((latitude * 2 * Math.PI) / 360)) / 360);
     let latmin = latitude - precisionlat;
     let longmin = longitude - precisionLong;
     let latmax = latitude + precisionlat;

@@ -27,8 +27,9 @@ function popup(id) {
 setTimeout(getLocation, 100);
 let userLat
 let userLong
+let dis
 function postForm() {
-  let dis = document.getElementById("dist").value;
+  dis = document.getElementById("dist").value;
   userLat = document.getElementById("lat").value;
   userLong = document.getElementById("lon").value;
   let a = { lat: userLat, lon: userLong, dist: dis };
@@ -73,5 +74,20 @@ function deleteData(id) {
   $.post("/delete",idObj , () => {
     console.log("data removed from database")
     document.getElementById(id).innerHTML="Removed"
+  });
+}
+function notify(id) {
+  let mail=prompt('Where should We Mail you');
+  let precisionLength=dis;
+  let precisionlat = precisionLength / 111.32;
+    precisionLong =precisionLength / ((400075 * Math.cos((+userLat * 2 * Math.PI) / 360)) / 360);
+    let latmin = +userLat - precisionlat;
+    let longmin = +userLong - precisionLong;
+    let latmax = +userLat + precisionlat;
+    let longmax = +userLong + precisionLong;
+let notifObj={mail,latmin,latmax,longmin,longmax}
+$.post("/notify",notifObj , () => {
+    console.log("Notification Set")
+    document.getElementById(id).innerHTML="🔔 Set"
   });
 }
