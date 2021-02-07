@@ -1,0 +1,45 @@
+*{
+    text-align: center;
+    }
+    body{
+        background-image: url("statics/pic/donorbg2.jpg");
+        background-repeat:repeat-x;
+background-attachment: fixed;
+background-size:auto;
+        animation: slide 150s linear infinite ; /*to increase decrease animation speed change the time*/
+    }
+    @keyframes slide{
+0%{background-position: -100vw 0;} /* this is the position from where anim start*/
+100%{background-position: 100vw 0;}/*end positon*/
+}
+    .container {
+padding: 16px;
+background-color: rgba(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0, 0.5); /* Black w/opacity/see-through */
+color: white;
+font-weight: bold;
+border: 3px solid #FDFBFB;
+border-radius: 40px; /*container shape*/
+position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 2;
+width: 60%;
+padding: 50px;
+text-align: center;
+        font-family: Candara, serif;
+}
+    .btn1{
+        border-radius: 10px;
+        padding: 10px;
+        font-family:Verdana; 
+    }
+    .btn1:hover{
+        border-radius: 30px;
+        background:#98FB98;
+    }
+h1{
+    text-align: center;
+    font-size: 50px;
+}
