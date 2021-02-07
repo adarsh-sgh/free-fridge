@@ -147,7 +147,7 @@ function mail(reciver) {
     service: 'gmail',
     auth: {
       user: 'singh.adarsh.dev@gmail.com',
-      pass: INPUT_GPASS
+      pass: 'Sbahraich0@'
     }
   });
   
