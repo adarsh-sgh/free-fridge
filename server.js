@@ -40,6 +40,7 @@ app.post("/delete", (req, res) => {
  deleteById(req["body"]["id"])
 });
 app.post("/notify", (req, res) => {
+  req.body["latitude"] = parseFloat(req.body["latitude"]);
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("freefridge");
@@ -102,6 +103,19 @@ function deleteById(id) {
       db.close();
     });
   });
+}
+function checkReminder(latdonor,londonor) {
+  MongoClient.connect(url,(err,db)=>{
+    if (err) throw err;
+    let dbo=db.db("freefridge")
+    let query={$and:[{latmin:{$lt:latdonor}},{lonmin:{$lt:londonor}},{latmax:{$gt:latdonor}},{lonmax:{$gt:londonor}}]};
+    dbo.collection("reminder").find(query).toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      db.close();
+      // f(result)
+    });
+  })
 }
 
 const PORT = process.env.PORT || 3000;

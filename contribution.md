@@ -21,5 +21,12 @@ note:"No",
 latitude:78,
 longitude:98,
 remember:"on",
-}
+};
+</div>
+<div>
+{mail:"a@mail.in"
+latmin:"26.2849688825009"
+latmax:"26.37480.08983111749910169"
+longmin:"21.989956200294845"
+longmax:"220.010043799705153298"}
 </div>
