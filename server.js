@@ -3,6 +3,8 @@ const http = require("http");
 const express = require("express");
 const nodemailer = require("nodemailer");
 
+require('dotenv').config()
+
 const app = express();
 const server = http.createServer(app);
 app.use(express.static(path.join(__dirname, "statics")));
@@ -61,8 +63,8 @@ app.post("/notify", (req, res) => {
  
 var MongoClient = require("mongodb").MongoClient;
 ObjectID = require("mongodb").ObjectID;
-var url =
-  "mongodb+srv://lakki:Mproton.25@clusterp.kbs8v.mongodb.net/freefridge?authSource=admin";
+var url =process.env.URL;
+ console.log('url is ',process.env.URL,'\n',url)
 function addLocation(locat) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -147,7 +149,7 @@ function mail(reciver) {
     service: 'gmail',
     auth: {
       user: 'singh.adarsh.dev@gmail.com',
-      pass: 'Sbahraich0@'
+      pass: process.env.GPASS
     }
   });
   
@@ -171,13 +173,3 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-// checkReminder(11,11)
-// mail({
-//   _id: '601f9577226d30135c1333c3',
-//   mail: '20bcs048@nith.ac.in',
-//   latmin: 10.910168882500898,
-//   latmax: 11.089831117499102,
-//   longmin: 10.990833268507558,
-//   longmax: 11.009166731492442
-// })
